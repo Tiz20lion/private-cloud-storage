@@ -148,7 +148,7 @@ export default function GatePage() {
                              hover:border-primary/30 transition-colors"
                 >
                   <div className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-secondary">
-                    <Icon className="w-4.5 h-4.5 text-primary" />
+                    <Icon className="w-5 h-5 text-primary" />
                   </div>
                   <h3 className="font-semibold text-sm">{title}</h3>
                   <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
