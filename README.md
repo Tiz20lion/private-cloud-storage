@@ -51,7 +51,7 @@ File metadata (name, folder structure, size, mime type) is stored in MongoDB. Th
 1. Clone the repo and install dependencies:
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Tiz20lion/private-cloud-storage
 cd private-cloud-storage
 npm install
 ```
