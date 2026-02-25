@@ -6,7 +6,7 @@ const GATE_SECRET = process.env.GATE_SECRET || "";
 const GATE_COOKIE = "gate-access";
 const GATE_MAX_AGE = 60 * 60 * 24 * 30; // 30 days
 
-function isExemptPath(pathname: string): boolean {
+function isFullyExemptPath(pathname: string): boolean {
   return (
     pathname === "/gate" ||
     pathname.startsWith("/_next") ||
@@ -14,10 +14,17 @@ function isExemptPath(pathname: string): boolean {
   );
 }
 
+function isAuthExemptPath(pathname: string): boolean {
+  return (
+    pathname === "/login" ||
+    pathname.startsWith("/api/auth/login")
+  );
+}
+
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  if (isExemptPath(pathname)) {
+  if (isFullyExemptPath(pathname)) {
     return NextResponse.next();
   }
 
@@ -46,25 +53,17 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(new URL("/gate", request.url));
   }
 
-  // --- Layer 2: JWT auth check ---
-  if (pathname.startsWith("/api/")) {
-    const isAuthenticated = await verifyRequest(request);
-    if (!isAuthenticated) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
-    return NextResponse.next();
-  }
-
-  if (
-    pathname === "/login" ||
-    pathname.startsWith("/api/auth/login")
-  ) {
+  // --- Layer 2: JWT auth check (skip for login page and login API) ---
+  if (isAuthExemptPath(pathname)) {
     return NextResponse.next();
   }
 
   const isAuthenticated = await verifyRequest(request);
 
   if (!isAuthenticated) {
+    if (pathname.startsWith("/api/")) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
