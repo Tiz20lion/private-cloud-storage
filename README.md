@@ -46,7 +46,7 @@ JWT_SECRET=your_random_jwt_secret_at_least_32_chars
   {
     "AllowedHeaders": ["*"],
     "AllowedMethods": ["GET", "PUT", "HEAD"],
-    "AllowedOrigins": ["http://localhost:3000"],
+    "AllowedOrigins": ["http://localhost:3000", "your site link"],
     "ExposeHeaders": ["ETag"],
     "MaxAgeSeconds": 3000
   }
