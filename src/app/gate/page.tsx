@@ -136,22 +136,22 @@ export default function GatePage() {
         {/* Features */}
         <section className="px-4 py-16 sm:py-20">
           <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-12">
+            <div className="text-center mb-10">
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Everything You Need</h2>
               <p className="text-muted-foreground mt-2">Simple, fast, and fully under your control.</p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
               {features.map(({ icon: Icon, title, desc }) => (
                 <div
                   key={title}
-                  className="border border-border rounded-xl bg-card p-5 space-y-3
+                  className="border border-border rounded-xl bg-card p-4 sm:p-5
                              hover:border-primary/30 transition-colors"
                 >
-                  <div className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-secondary">
-                    <Icon className="w-5 h-5 text-primary" />
+                  <div className="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-secondary mb-3">
+                    <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                   </div>
-                  <h3 className="font-semibold text-sm">{title}</h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+                  <h3 className="font-semibold text-xs sm:text-sm">{title}</h3>
+                  <p className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed mt-1.5 hidden sm:block">{desc}</p>
                 </div>
               ))}
             </div>
