@@ -140,7 +140,7 @@ export default function GatePage() {
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Everything You Need</h2>
               <p className="text-muted-foreground mt-2">Simple, fast, and fully under your control.</p>
             </div>
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 text-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 text-center">
               {features.map(({ icon: Icon, title, desc }) => (
                 <div
                   key={title}
@@ -151,7 +151,7 @@ export default function GatePage() {
                     <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                   </div>
                   <h3 className="font-semibold text-xs sm:text-sm">{title}</h3>
-                  <p className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed mt-1.5 hidden sm:block">{desc}</p>
+                  <p className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed mt-1.5">{desc}</p>
                 </div>
               ))}
             </div>
